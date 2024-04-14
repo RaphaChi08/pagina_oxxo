@@ -2,6 +2,8 @@ import './App.css';
 import profile from './profile-user.png';
 import cart from './shopping-cart.png';
 import search from "./search.png";
+import { ProductoOxxo } from './product';
+import datos from './datos';
 
 const navigation = [
   { name: 'Inicio', href: '#', current: true },
@@ -31,9 +33,9 @@ export default function App() {
             <button className="w-14 mr-5">
               <img className="w-full" src={cart}></img>
             </button>
-            <button className='w-14 mr-5'>
+            {/*<button className='w-14 mr-5'>
               <img className='w-full' src={profile} />
-            </button>
+            </button>*/}
           </div>
         </div>
 
@@ -70,13 +72,18 @@ export default function App() {
         </div>
         <div className="w-full h-96 flex justify-center items-center relative z-20 bg-transparent" />
         {/* Aca van las cards, quita el h-lvh porque ese tamaño de height es solo de ejemplo, el chiste es que se ajusta a la cantidad de cards en la pagina */}
-        <div className="h-lvh w-full bg-gray-700 relative z-40 drop-shadow-2xl"></div>
-
+        <div className="h-auto w-full py-4 bg-gray-700 relative z-40 flex flex-wrap justify-evenly ">
+          {datos.map((item) => (
+            <ProductoOxxo clave={item.clave} precio={item.precio} imagen={item.imagen} descripcion={item.descripcion}></ProductoOxxo>
+          ))}
+        </div>
       </body>
 
       {/* Pie de pagina, una parte de información al final */}
-      <footer className='bg-black h-24 w-full'>
-
+      <footer className='bg-black h-auto w-full text-white text-center p-7'>
+          <img className='h-10 rounded-lg mx-auto block' src='https://www.oxxo.com/img/logo-r.png' />
+          <h2>Alejandro Jimenez Ramirez</h2>
+          <h2>Rafael Carrillo Alcantar</h2>
       </footer>
     </div>
   )
