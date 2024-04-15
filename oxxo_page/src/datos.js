@@ -1,7 +1,7 @@
 const datos = [
     {
         clave:'001',
-        precio:15,
+        precio:15 ,
         descripcion:"Coca Cola 3L",
         imagen: require("./media/images.png")
     },
