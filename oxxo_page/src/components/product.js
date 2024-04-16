@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import '../App.css';
 
 export const ProductoOxxo = (props) => {
 
@@ -43,7 +43,6 @@ export const ProductoOxxo = (props) => {
                 <>
                     <button className='w-10 h-10  top-8 right-8 bg-red-600 hover:bg-slate-400 from-neutral-50 rounded-full p-2 m-0 leading-none font-extrabold text-center flex items-center justify-center cursor-pointer z-50 absolute' onClick={cero}>X</button>
                     <button className='w-10 h-10  top-8 right-20 bg-red-600 hover:bg-slate-400 from-neutral-50 rounded-full p-2 m-0 leading-none font-extrabold text-center flex items-center justify-center cursor-pointer z-50 absolute' onClick={decrementarContador}>---</button>
-
 
                     <button className="z-40 bg-transparent border-spacing-0 p-2 text-center inline-block mx-1 my-1 cursor-pointer rounded-3xl relative" onClick={incrementarContador} id={props.clave}>
                         <img className="rounded-3xl p-4" src={props.imagen} alt="Producto" />
