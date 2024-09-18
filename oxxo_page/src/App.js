@@ -18,17 +18,17 @@ function classNames(...classes) {
 
 export default function App() {
   const [open, setOpen] = useState(false);
-
+  let totalVenta = 0;
   const [localDatos, setLocalDatos] = useState([]);
 
-  function recargarDatos(){
+  function recargarDatos() {
     const datosGuardados = [];
-      for (let i = 0; i < localStorage.length; i++) {
-        const clave = localStorage.key(i);
-        const valor = localStorage.getItem(clave);
-        datosGuardados.push({ clave, valor });
-      }
-      setLocalDatos(datosGuardados);
+    for (let i = 0; i < localStorage.length; i++) {
+      const clave = localStorage.key(i);
+      const valor = localStorage.getItem(clave);
+      datosGuardados.push({ clave, valor });
+    }
+    setLocalDatos(datosGuardados);
   }
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function App() {
 
             {/* parte de la sidebar */}
             <button className="w-14 mr-5 cursor-pointer" onClick={() => {
-              setOpen(true) 
+              setOpen(true)
               recargarDatos()
             }}>
               <img className="w-full" src={cart}></img>
@@ -89,19 +89,20 @@ export default function App() {
         <>
           <div className='absolute w-full h-full z-50 flex items-end bg-black/50 backdrop-blur-sm top-0 right-0 translate-x-0' onClick={() => setOpen(false)}>
             <div className='text-black bg-gray-700 flex-col absolute right-0 top-0 h-screen p-8 gap-8 z-50 w-96 flex rounded-s-xl items-center'>
-
+              <h1 className='text-white'>Carrito de compras</h1>
               {localDatos.map((itemLocal) => {
                 const itemEncontrado = datos.find((itemDato) => itemDato.clave === itemLocal.clave);
-                
+
                 if (itemEncontrado && itemLocal.valor > 0) {
                   let precio = itemEncontrado.precio * itemLocal.valor;
-                  return <>
+                  totalVenta = totalVenta + precio;
+                  return (
                     <div className='w-full h-12 bg-yellow-600 py-2 px-3 rounded-lg items-center justify-center flex text-white'>
                       <h2>
-                        {itemEncontrado.descripcion} x{itemLocal.valor}:  {precio}
+                        {itemEncontrado.descripcion} x {itemLocal.valor} : {precio}
                       </h2>
                     </div>
-                  </>;
+                  );
                 }
               })}
             </div>
